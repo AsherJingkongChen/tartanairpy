@@ -142,10 +142,10 @@ class AirLabDownloader(object):
 class HuggingfaceDownloader(object):
     def __init__(self, bucket_name = 'tartanair2') -> None:
         from huggingface_hub import snapshot_download
-        self.chunk_size = 100  # Number of files to download per chunk from Hugging Face
+        self.chunk_size = 35000  # Large chunk to avoid repeated repo tree listing per call
 
         if bucket_name == 'tartanair2':
-            pass
+            self.repo_id = "theairlabcmu/tartanair2"
         elif bucket_name == 'tartanground':
             self.repo_id = "theairlabcmu/TartanGround"
         else:
@@ -182,7 +182,7 @@ class TartanAirDownloader(TartanAirModule):
         super().__init__(tartanair_data_root)
 
         # self.downloader = CloudFlareDownloader()
-        self.downloader = AirLabDownloader(bucket_name = 'tartanair2')
+        self.downloader = HuggingfaceDownloader(bucket_name = 'tartanair2')
 
     def generate_filelist(self, envs, difficulties, modalities, camera_names): 
         '''

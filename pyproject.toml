@@ -39,14 +39,15 @@ dependencies = [
     "pandas",
     "imageio",
     "einops",
-    "tqdm", 
-    "boto3", 
-    "minio", 
+    "tqdm",
+    "boto3",
+    "minio",
     "cupy-cuda12x",
     "torchvision",
     "torch",
     "huggingface_hub",
-    ]
+    "hf-transfer >= 0.1.9",
+]
 
 [project.urls]
 "Homepage" = "https://tartanair.org"
